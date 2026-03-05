@@ -9,14 +9,23 @@ const demoSub = {
   jobAddress: '123 Oak St, Denver CO',
 }
 
-const demoItems = [
+const demoItems: Array<{
+  id: string
+  title: string
+  description: string
+  category: string
+  priority: 'low' | 'medium' | 'high' | 'critical'
+  status: 'open' | 'in_progress' | 'completed' | 'approved' | 'rejected'
+  due_date: string | null
+  created_at: string
+}> = [
   {
     id: 'item-1',
     title: 'Fix garage door alignment',
     description: 'Door binds when opening. Needs adjustment on the spring tension and possibly track realignment.',
     category: 'Mechanical',
-    priority: 'high' as const,
-    status: 'in_progress' as const,
+    priority: 'high',
+    status: 'in_progress',
     due_date: '2025-02-01',
     created_at: '2025-01-15',
   },
@@ -25,8 +34,8 @@ const demoItems = [
     title: 'Lubricate all door hinges',
     description: 'Several interior door hinges are squeaking.',
     category: 'Mechanical',
-    priority: 'low' as const,
-    status: 'open' as const,
+    priority: 'low',
+    status: 'open',
     due_date: null,
     created_at: '2025-01-16',
   },
