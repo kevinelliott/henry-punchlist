@@ -1,0 +1,34 @@
+{
+  "name": "henry-punchlist",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:init": "tsx scripts/db-init.ts",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "next": "14.2.18",
+    "react": "^18",
+    "react-dom": "^18",
+    "next-auth": "^4.24.11",
+    "better-sqlite3": "^11.7.0",
+    "bcryptjs": "^2.4.3",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/bcryptjs": "^2.4.6",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2"
+  }
+}
