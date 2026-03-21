@@ -1,6 +1,13 @@
-import { createClient } from '@supabase/supabase-js'
-
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
-
-export const supabase = createClient(url, key)
+import { createClient, SupabaseClient } from "@supabase/supabase-js"
+function getUrl() { return process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co" }
+function getAnonKey() { return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder-anon-key" }
+function getServiceKey() { return process.env.SUPABASE_SERVICE_ROLE_KEY || "placeholder-service-key" }
+export function getSupabase(): SupabaseClient { return createClient(getUrl(), getAnonKey()) }
+export function createServiceClient(): SupabaseClient { return createClient(getUrl(), getServiceKey()) }
+let _supabase: SupabaseClient | null = null
+export const supabase = new Proxy({} as SupabaseClient, {
+  get(_target: SupabaseClient, prop: string | symbol) {
+    if (!_supabase) _supabase = createClient(getUrl(), getAnonKey())
+    return (_supabase as any)[prop]
+  }
+})
